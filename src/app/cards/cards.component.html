@@ -1,19 +1,19 @@
 <section class="cards-container">
-  <article ngFor="let card in cards" class="card" [ngClass]="cards.discount = 'card-discount' : 'card-not-discount'">
-    <p class="discount" ngIf="cards.discount">
-      {{ cards.discount }}% de réduction !
+  <article
+    *ngFor="let card of cards"
+    class="card"
+    [ngClass]="card.discount ? 'card-discount' : 'card-not-discount'"
+  >
+    <p class="discount" *ngIf="card.discount">
+      {{ card.discount }}% de réduction !
     </p>
-    <p ngIf="cards.isFavorite" class="heart">&#10084;</p>
-    <img src="cards.picture" [alt]="cards.tile" />
-    <h3>{ card.title }</h3>
-    <p>
-      { card.description }
-    </p>
-    <p>
-      Prix : { card.price } Euros
-    </p>
+    <p *ngIf="card.isFavorite" class="heart">&#10084;</p>
+    <img [src]="card.picture" [alt]="card.title" />
+    <h3>{{ card.title }}</h3>
+    <p>{{ card.description }}</p>
+    <p>Prix : {{ card.price }} Euros</p>
     <footer>
-      <button [clicke]="addToFavorite(card)">J'aime</button>
+      <button (click)="addToFavorite(card)">J'aime</button>
     </footer>
   </article>
 </section>

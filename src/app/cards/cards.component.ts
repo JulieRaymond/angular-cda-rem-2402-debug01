@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { Card } from '../models/card.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.scss'
 })
 export class CardsComponent {
-  cards: Card = [
+  cards: Card[] = [
     {
       title: 'Produit 1',
       picture: 'https://via.placeholder.com/150',
